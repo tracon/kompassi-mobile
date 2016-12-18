@@ -12,6 +12,7 @@ import Home from './components/home/';
 import BlankPage from './components/blankPage';
 import SplashPage from './components/splashscreen/';
 import SideBar from './components/sideBar';
+import FeedbackView from './components/FeedbackView';
 import { statusBarColor } from './themes/base-theme';
 
 const {
@@ -81,6 +82,8 @@ class AppNavigator extends Component {
         return <Home />;
       case 'blankPage':
         return <BlankPage />;
+      case 'feedback':
+        return <FeedbackView />;
       default :
         return <Login />;
     }

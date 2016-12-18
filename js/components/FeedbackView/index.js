@@ -4,14 +4,17 @@ import { actions } from 'react-native-navigation-redux-helpers';
 import { Container, Header, Title, Content, Text, Button, Icon } from 'native-base';
 
 import { openDrawer } from '../../actions/drawer';
+import FeedbackFaces from '../FeedbackFaces';
+import CommonHeader from '../CommonHeader';
 import styles from './styles';
+
 
 const {
   popRoute,
 } = actions;
 
-class BlankPage extends Component {
 
+class FeedbackView extends Component {
   static propTypes = {
     name: React.PropTypes.string,
     index: React.PropTypes.number,
@@ -32,22 +35,10 @@ class BlankPage extends Component {
 
     return (
       <Container style={styles.container}>
-        <Header>
-          <Button transparent onPress={() => this.popRoute()}>
-            <Icon name="ios-arrow-back" />
-          </Button>
-
-          <Title>{(name) ? this.props.name : 'Blank Page'}</Title>
-
-          <Button transparent onPress={this.props.openDrawer}>
-            <Icon name="ios-menu" />
-          </Button>
-        </Header>
+        <CommonHeader title="Palaute" />
 
         <Content padder>
-          <Text>
-            {(!isNaN(index)) ? list[index] : 'Create Something Awesome . . .'}
-          </Text>
+          <FeedbackFaces />
         </Content>
       </Container>
     );
@@ -69,4 +60,4 @@ const mapStateToProps = state => ({
 });
 
 
-export default connect(mapStateToProps, bindAction)(BlankPage);
+export default connect(mapStateToProps, bindAction)(FeedbackView);

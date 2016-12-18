@@ -9,6 +9,31 @@ import myTheme from '../../themes/base-theme';
 
 import styles from './style';
 
+
+const menuItems = [
+  {
+    slug: 'home',
+    text: 'Tapahtuman etusivu',
+  },
+  {
+    slug: 'info',
+    text: 'Tapahtumainfo',
+  },
+  {
+    slug: 'programme',
+    text: 'Ohjelma',
+  },
+  {
+    slug: 'shifts',
+    text: 'Työvuorosi',
+  },
+  {
+    slug: 'feedback',
+    text: 'Palaute',
+  }
+];
+
+
 class SideBar extends Component {
 
   static propTypes = {
@@ -24,12 +49,11 @@ class SideBar extends Component {
     return (
       <Content theme={myTheme} style={styles.sidebar} >
         <List>
-          <ListItem button onPress={() => this.navigateTo('home')} >
-            <Text>Home</Text>
-          </ListItem>
-          <ListItem button onPress={() => this.navigateTo('blankPage')} >
-            <Text>Blank Page</Text>
-          </ListItem>
+          {menuItems.map(menuItem => (
+            <ListItem key={menuItem.slug} button onPress={() => this.navigateTo(menuItem.slug)} >
+              <Text>{menuItem.text}</Text>
+            </ListItem>
+          ))}
         </List>
       </Content>
     );
